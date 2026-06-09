@@ -1,97 +1,49 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🟡🔵 12 Numara - Taraftar Uygulaması
 
-# Getting Started
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![OpenWeather API](https://img.shields.io/badge/OpenWeather-API-orange?style=for-the-badge)
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+12 Numara, React Native mimarisi kullanılarak geliştirilmiş, çapraz platform (iOS/Android) destekli, ölçeklenebilir bir mobil spor uygulamasıdır. Kulübün faaliyet gösterdiği tüm spor branşlarını tek bir dinamik arayüz mimarisi altında toplamak üzere tasarlanmıştır (mevcut MVP aşamasında Futbol ve Basketbol branşlarına odaklanılmıştır).
 
-## Step 1: Start Metro
+## 🚀 Öne Çıkan Özellikler
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+* **Çevrimdışı Öncelikli Kimlik Doğrulama (Auth Flow):** Giriş ve kayıt olma süreçleri, mükerrer kayıt kontrolü (duplicate check) ve güvenli veri yönetimi ile `AsyncStorage` kullanılarak yerel hafızada yönetilir.
+* **Dinamik Arayüz Oluşturma (Dynamic UI Rendering):** Akıllı `MacDetay` bileşeni, tıklanan maçın branşını otomatik olarak algılar ve arayüzü (ikonlar, başlıklar, veri formatları) saniyeler içinde otonom olarak dönüştürür (Örn: Futbol için "Gol/Dakika" formatından Basketbol için "Sayı/Asist/Ribaund" formatına geçiş).
+* **İlişkisel Yerel Veri Yapısı:** İstatistik ve olay verileri, ilişkisel veritabanı mantığına uygun olarak yabancı anahtar (`macId`) kullanımı ile yapılandırılmış ve milimetrik olarak filtrelenmiştir.
+* **Canlı Hava Durumu Entegrasyonu:** **OpenWeatherMap REST API** entegrasyonu sayesinde, maçın oynanacağı şehir bilgisi asenkron (async/await) isteklerle sorgulanarak canlı sıcaklık ve hava durumu verileri anlık olarak ekrana yansıtılır.
+* **Performans Optimizasyonu:** Klavye girdileri sırasında tüm sayfanın gereksiz yere yeniden render (re-render) edilmesini önlemek amacıyla input bileşenleri ana fonksiyonun dışına taşınarak klavye gecikmeleri sıfıra indirilmiştir.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 🛠️ Kullanılan Teknolojiler
 
-```sh
-# Using npm
-npm start
+* **Frontend Framework:** React Native (Expo)
+* **Navigasyon:** React Navigation
+* **Programlama Dili:** TypeScript / JavaScript
+* **Yerel Depolama:** AsyncStorage
+* **Canlı Veri:** OpenWeatherMap API
+* **İkon Kütüphanesi:** React Native Vector Icons
 
-# OR using Yarn
-yarn start
-```
 
-## Step 2: Build and run your app
+## 🔮 Gelecek Çalışmalar (Yol Haritası)
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- [ ] Firebase veya Node.js/PostgreSQL tabanlı gerçek zamanlı merkezi bir Backend sunucusuna geçiş yapılması.
+- [ ] Mevcut ölçeklenebilir mimariyi kullanarak Voleybol, Kürek ve Masa Tenisi gibi diğer tüm branşların kod yapısına dokunulmadan veritabanı üzerinden sisteme dahil edilmesi.
+- [ ] WebSocket teknolojisi entegre edilerek canlı skorların arayüze anlık (real-time) yansıtılması.
+- [ ] Firebase Cloud Messaging (FCM) ile anlık bildirim (Push Notification) sisteminin kurulması.
 
-### Android
+## 📥 Kurulum ve Çalıştırma
 
-```sh
-# Using npm
-npm run android
+Projeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
-# OR using Yarn
-yarn android
-```
+```bash
+# Projeyi klonlayın
+git clone [https://github.com/ahmet2910/12-numara-app.git](https://github.com/ahmet2910/12-numara-app.git)
 
-### iOS
+# Proje klasörüne gidin
+cd 12-numara-app
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+# Gerekli bağımlılıkları yükleyin
+npm install
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+# Önbelleği temizleyerek projeyi ayağa kaldırın
+npx expo start --clear
